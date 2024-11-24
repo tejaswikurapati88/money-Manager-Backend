@@ -37,6 +37,12 @@ app.get('/api/users', async (req, res)=>{
     res.send(respo)
 })
 
+app.delete('/api/users', async (req, res)=>{
+    const deletSql= `DELETE FROM  users; `
+    await db.run(deletSql)
+    res.send('deleted Successfully')
+})
+
 // user registrations
 app.post('/api/users/signin', async (req, res)=>{
     const {id, username, password}= req.body
